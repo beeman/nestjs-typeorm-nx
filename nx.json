@@ -8,10 +8,10 @@
     "nx.json": "*"
   },
   "projects": {
-    "nestjs-typeorm-e2e": {
+    "web-e2e": {
       "tags": []
     },
-    "nestjs-typeorm": {
+    "web": {
       "tags": []
     },
     "api": {

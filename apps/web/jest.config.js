@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'nestjs-typeorm',
+  name: 'web',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/nestjs-typeorm',
+  coverageDirectory: '../../coverage/apps/web',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
     'jest-preset-angular/HTMLCommentSerializer.js'
