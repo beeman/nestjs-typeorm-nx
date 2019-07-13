@@ -19,6 +19,15 @@
     },
     "api-interface": {
       "tags": []
+    },
+    "api-core": {
+      "tags": ["api"]
+    },
+    "api-database": {
+      "tags": ["api"]
+    },
+    "api-user": {
+      "tags": ["api"]
     }
   }
 }

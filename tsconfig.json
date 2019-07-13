@@ -16,7 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@beeman/api-interface": ["libs/api-interface/src/index.ts"]
+      "@beeman/api/interfaces": ["libs/api/interfaces/src/index.ts"],
+      "@beeman/api/core": ["libs/api/core/src/index.ts"],
+      "@beeman/api/database": ["libs/api/database/src/index.ts"],
+      "@beeman/api/user": ["libs/api/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

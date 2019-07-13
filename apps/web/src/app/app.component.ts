@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@beeman/api-interface';
+import { Message } from '@beeman/api/interfaces';
 
 @Component({
   selector: 'beeman-root',
