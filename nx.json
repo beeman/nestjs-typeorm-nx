@@ -1,0 +1,24 @@
+{
+  "npmScope": "beeman",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "nestjs-typeorm-e2e": {
+      "tags": []
+    },
+    "nestjs-typeorm": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "api-interface": {
+      "tags": []
+    }
+  }
+}

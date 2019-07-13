@@ -1,0 +1,221 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "nestjs-typeorm": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/nestjs-typeorm",
+      "sourceRoot": "apps/nestjs-typeorm/src",
+      "prefix": "beeman",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/nestjs-typeorm",
+            "index": "apps/nestjs-typeorm/src/index.html",
+            "main": "apps/nestjs-typeorm/src/main.ts",
+            "polyfills": "apps/nestjs-typeorm/src/polyfills.ts",
+            "tsConfig": "apps/nestjs-typeorm/tsconfig.app.json",
+            "assets": [
+              "apps/nestjs-typeorm/src/favicon.ico",
+              "apps/nestjs-typeorm/src/assets"
+            ],
+            "styles": ["apps/nestjs-typeorm/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/nestjs-typeorm/src/environments/environment.ts",
+                  "with": "apps/nestjs-typeorm/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "nestjs-typeorm:build",
+            "proxyConfig": "apps/nestjs-typeorm/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nestjs-typeorm:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nestjs-typeorm:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/nestjs-typeorm/tsconfig.app.json",
+              "apps/nestjs-typeorm/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/nestjs-typeorm/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/nestjs-typeorm/jest.config.js",
+            "tsConfig": "apps/nestjs-typeorm/tsconfig.spec.json",
+            "setupFile": "apps/nestjs-typeorm/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "nestjs-typeorm-e2e": {
+      "root": "apps/nestjs-typeorm-e2e",
+      "sourceRoot": "apps/nestjs-typeorm-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/nestjs-typeorm-e2e/cypress.json",
+            "tsConfig": "apps/nestjs-typeorm-e2e/tsconfig.e2e.json",
+            "devServerTarget": "nestjs-typeorm:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "nestjs-typeorm:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/nestjs-typeorm-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/nestjs-typeorm-e2e/**"]
+          }
+        }
+      }
+    },
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/api/tsconfig.app.json",
+              "apps/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "tsConfig": "apps/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "api-interface": {
+      "root": "libs/api-interface",
+      "sourceRoot": "libs/api-interface/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-interface/tsconfig.lib.json",
+              "libs/api-interface/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api-interface/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-interface/jest.config.js",
+            "tsConfig": "libs/api-interface/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "nestjs-typeorm"
+}
