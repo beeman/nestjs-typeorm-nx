@@ -1,11 +1,14 @@
 {
-  "name": "web",
+  "name": "nestjs-typeorm-nx",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build api --prod && ng build web --prod",
+    "docker:build": "docker build --cache-from beeman/nestjs-typeorm-nx -f ./Dockerfile -t beeman/nestjs-typeorm-nx:latest .",
+    "docker:run": "docker run -it -p 3333:3333 beeman/nestjs-typeorm-nx:latest",
+    "docker:push": "docker push beeman/nestjs-typeorm-nx:latest",
     "test": "ng test",
     "lint": "nx lint && ng lint",
     "e2e": "ng e2e",
